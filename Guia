@@ -1,0 +1,29 @@
+
+mkvirtualenv py3 --python=python3
+
+
+git init
+git config --global user.name "EmersonPereiraOliveira"
+git config --global user.email "emersonhaw@gmail.com"
+git clone https://github.com/EmersonPereiraOliveira/Chatbot-NodeJS.git
+
+
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+nodejs -v
+
+Esse está em portuguẽs e mais explicado
+https://www.youtube.com/watch?v=Z1r2iqCeDFI&list=PLe3OK0hpgNMBxoHJ432x_gsxkIpuNBL_r
+
+Criar página no facebook
+Criar um aplicativo do tipo messenger no Facebook developers
+Selecionar a página criada de "teste "
+Configurar Webhooks
+Criar máquina no C9.io
+    npm unistall express --save
+    npm install express --save
+    npm install request --save
+
+Configurar rota get e post e criar variáveis "bodyParser" e "request"
+Selecionar a página no facebook developers abaixo do webhook
