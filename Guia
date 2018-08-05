@@ -28,5 +28,32 @@ Criar máquina no C9.io
 Configurar rota get e post e criar variáveis "bodyParser" e "request"
 Selecionar a página no facebook developers abaixo do webhook
 
+
+#Definir mensagem de Boas vindas no messenger -- Na bash do site
+curl -X POST -H "Content-Type: application/json" -d '{
+    "setting_type":"greeting",
+    "greeting":{
+        "text":"Olá, sou o robô atendente da clínica Inovar. Vamos começar?"
+    }
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAAEF25KV2QgBAJDKFuZCZCVdIxZAxPYKiOPxRbyZCjZAgZAsQLhMNbzsIc66vQbA8lhA0eJZAMakZBB1OeINCcya7rMp75RJiCq9H1ZCwr57jVY5xx49u5WZCeqX6iS76nnXslOTJJoXwc1Mo4b05zdbzUhY6RrO0TOZAaxnePbtOS0mz6uVNakZB0zO"
+
+
+
+#Definir botão de Boas vindas no messenger -- Na bash do site ---
+##Só altera o nome da "variável", não altera no página do face!
+curl -X POST -H "Content-Type: application/json" -d '{
+    "setting_type":"call_to_actions",
+    "thread_state":"new_thread",
+    "call_to_actions":[
+        {
+            "payload":"clicou_comecar"
+        }
+    ]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAAEF25KV2QgBAJDKFuZCZCVdIxZAxPYKiOPxRbyZCjZAgZAsQLhMNbzsIc66vQbA8lhA0eJZAMakZBB1OeINCcya7rMp75RJiCq9H1ZCwr57jVY5xx49u5WZCeqX6iS76nnXslOTJJoXwc1Mo4b05zdbzUhY6RrO0TOZAaxnePbtOS0mz6uVNakZB0zO"
+
+
+https://developers.facebook.com/docs/messenger-platform/send-messages/template/button?locale=pt_BR
+
+
 Python
 https://www.youtube.com/watch?v=KWFsCT27SBo&index=5&list=PLyb_C2HpOQSC4M3lzzrql7DSppTeAxh-x

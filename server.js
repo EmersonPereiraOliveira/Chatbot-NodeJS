@@ -69,6 +69,18 @@ router.post('/webhook', function (req, res){
         if (event.message) {
           //console.log(event.message);
           tratarMensagem(event);
+        } else {
+          if (event.postback && event.postback.payload){
+            //console.log("Achamos payload. Ele é", event.postback.payload);
+            switch (event.postback.payload){
+              case 'clicou_comecar':
+                sendTextMessage(event.sender.id, 'Como euposso te ajudar? Veja as opções abaixo:');
+                sendFirstMenu(event.sender.id);
+              default:
+                break;
+
+            }
+          }
         }
       })
     })
@@ -120,6 +132,47 @@ function sendTextMessage (recipientId, messageText) {
   //Envia via esta função
   callSendApi(messageData);
 }
+
+
+function sendFirstMenu (recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: 'template',
+        payload: {
+         template_type: 'button',
+         text: 'O que você procura?',
+         buttons: [
+
+           {
+             type: 'web_url',
+             url: 'https://www.google.com',
+             title: 'Acesse nosso site!'
+           },
+
+           {
+             type: 'postback',
+             title: 'Preço de entrada',
+             payload: 'clicou_preco'
+           },
+
+           {
+             type: 'postback',
+             title: 'Banda de hoje',
+             payload: 'clicou_banda'
+           }
+         ]
+        }
+      }
+    }
+  };
+  //Envia via esta função
+  callSendApi(messageData);
+}
+
 
 
 //Função default do Facebook para responder a requisições (Enviar mensagem para o usuário)
